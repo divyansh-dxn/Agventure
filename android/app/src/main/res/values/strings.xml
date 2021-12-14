@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Agventure</string>
+    <string name="leaves_image">leaves_image</string>
+    <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laboret</string>
 </resources>
