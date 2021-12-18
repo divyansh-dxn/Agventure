@@ -10,3 +10,4 @@ rootProject.name = "Agventure"
 include ':app'
 include ':seller'
 include ':buyer'
+include ':auth'

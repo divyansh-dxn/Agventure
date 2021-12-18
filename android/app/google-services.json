@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1078352768479",
+    "project_id": "agventure-8654a",
+    "storage_bucket": "agventure-8654a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078352768479:android:9c9267e42fa36f0676686a",
+        "android_client_info": {
+          "package_name": "com.dxn.agventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078352768479-9j4kk5ujaopdp7vd4gu9e50bi81on3kd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlVKA8na7Zg_s2rFdJgScZZbblrUqmZwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078352768479-9j4kk5ujaopdp7vd4gu9e50bi81on3kd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
