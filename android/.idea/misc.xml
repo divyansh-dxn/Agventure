@@ -9,7 +9,11 @@
         <entry key="app/src/main/res/layout/fragment_on_boarding.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/fragment_onboarding1.xml" value="0.2234375" />
+        <entry key="auth/src/main/res/drawable/img_leaves.xml" value="0.23958333333333334" />
+        <entry key="auth/src/main/res/layout/activity_main.xml" value="0.10955710955710955" />
         <entry key="auth/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="auth/src/main/res/layout/fragment_auth.xml" value="0.25" />
+        <entry key="auth/src/main/res/layout/fragment_on_boarding.xml" value="0.2234375" />
         <entry key="buyer/src/main/res/layout/activity_main.xml" value="0.12635869565217392" />
         <entry key="seller/src/main/res/layout/activity_main.xml" value="0.2234375" />
       </map>
