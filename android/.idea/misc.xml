@@ -17,9 +17,6 @@
         <entry key="auth/src/main/res/layout/fragment_on_boarding.xml" value="0.2234375" />
         <entry key="buyer/src/main/res/layout/activity_main.xml" value="0.12635869565217392" />
         <entry key="seller/src/main/res/layout/activity_main.xml" value="0.2234375" />
-        <entry key="seller/src/main/res/layout/add_fragment.xml" value="0.20833333333333334" />
-        <entry key="seller/src/main/res/layout/home_fragment.xml" value="0.2" />
-        <entry key="seller/src/main/res/layout/product_card.xml" value="0.2234375" />
       </map>
     </option>
   </component>
