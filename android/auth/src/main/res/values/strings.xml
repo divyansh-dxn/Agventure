@@ -20,4 +20,6 @@
     <string name="placeholder">Lorem</string>
     <string name="seller_login">Continue As Seller</string>
     <string name="customer_login">Continue As Consumer</string>
+    <string name="name_hint">Full Name</string>
+    <string name="continue_signup">Sign Up</string>
 </resources>
