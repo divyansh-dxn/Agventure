@@ -23,14 +23,14 @@
             android:id="@+id/productName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
+            android:text="Brinjal"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/productQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Brinjal"
+            android:text="Stock : 60kg"
             android:textAlignment="center" />
 
         <TextView

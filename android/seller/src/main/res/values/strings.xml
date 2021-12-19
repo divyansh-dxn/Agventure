@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Seller</string>
+    <string name="price_hint">Price</string>
+    <string name="quantity_hint">Quantity</string>
+    <array  name="dummy_list">
+
+
+    </array>
 </resources>
