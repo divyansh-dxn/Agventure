@@ -1,10 +1,10 @@
 package com.dxn.data.models
 
 val crops = mapOf(
-    1 to "BITTER GUARD",
-    2 to "POTATO",
-    3 to "TOMATO",
-    4 to "BRINJAL"
+    "1" to "BITTER GUARD",
+    "2" to "POTATO",
+    "3" to "TOMATO",
+    "4" to "BRINJAL"
 )
 
 data class Product(

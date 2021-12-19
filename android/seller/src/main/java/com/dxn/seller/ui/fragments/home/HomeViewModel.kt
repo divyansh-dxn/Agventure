@@ -11,10 +11,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.lang.Exception
+import javax.inject.Inject
 
 
 @HiltViewModel
 class HomeViewModel
+@Inject
 constructor(
     private val repository: Repository,
     private val auth: FirebaseAuth

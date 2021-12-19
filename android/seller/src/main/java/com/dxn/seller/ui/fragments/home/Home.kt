@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.dxn.seller.R
 import com.dxn.seller.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,6 +25,9 @@ class Home : Fragment() {
     ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
 
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_add)
+        }
 
 
         return binding.root
