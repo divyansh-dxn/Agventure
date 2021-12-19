@@ -1,4 +1,4 @@
-package com.dxn.auth.data.models
+package com.dxn.data.models
 
 class User(
     val name: String = "",
@@ -6,5 +6,5 @@ class User(
     val role : Int = 0
 )
 
-// 0 -- consumer
-// 1 -- seller
+// 0 - consumer
+// 1 - seller

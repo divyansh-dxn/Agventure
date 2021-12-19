@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.dxn.auth.data.models.User
+import com.dxn.data.models.User
 import com.dxn.auth.databinding.FragmentAuthBinding
 import com.dxn.auth.utils.formatPhoneNumber
 import com.dxn.auth.R
