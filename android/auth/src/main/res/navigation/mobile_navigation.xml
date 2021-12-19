@@ -6,16 +6,34 @@
     app:startDestination="@id/onBoarding">
     <fragment
         android:id="@+id/onBoarding"
-        android:name="com.dxn.auth.OnBoarding"
+        android:name="com.dxn.auth.ui.fragments.OnBoarding"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding" >
         <action
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"
             android:id="@+id/action_onBoarding_to_auth"
             app:destination="@id/auth" />
+        <action
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_onBoarding_to_settingUpUser"
+            app:destination="@id/settingUpUser" />
     </fragment>
     <fragment
         android:id="@+id/auth"
-        android:name="com.dxn.auth.Auth"
+        android:name="com.dxn.auth.ui.fragments.Auth"
         android:label="fragment_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth" >
+        <action
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_auth_to_settingUpUser"
+            app:destination="@id/settingUpUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingUpUser"
+        android:name="com.dxn.auth.ui.fragments.SettingUpUser"
+        android:label="fragment_setting_up_user"
+        tools:layout="@layout/fragment_setting_up_user" />
 </navigation>

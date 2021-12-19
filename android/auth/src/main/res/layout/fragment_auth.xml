@@ -10,7 +10,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="24dp"
-        tools:context=".Auth">
+        tools:context=".ui.fragments.Auth">
 
         <ImageView
             android:id="@+id/img_leaves"

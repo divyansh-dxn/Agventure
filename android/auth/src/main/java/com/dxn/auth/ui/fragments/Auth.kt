@@ -1,4 +1,4 @@
-package com.dxn.auth
+package com.dxn.auth.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.dxn.auth.data.models.User
 import com.dxn.auth.databinding.FragmentAuthBinding
+import com.dxn.auth.utils.formatPhoneNumber
+import com.dxn.auth.R
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -18,9 +22,11 @@ import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import io.grpc.InternalChannelz.id
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import java.util.concurrent.TimeUnit
+
 
 class Auth : Fragment() {
 
@@ -29,6 +35,7 @@ class Auth : Fragment() {
     private val binding get() = _binding!!
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private lateinit var firestore: FirebaseFirestore
+    var phoneNumber : String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,22 +46,30 @@ class Auth : Fragment() {
         auth = Firebase.auth
         firestore = FirebaseFirestore.getInstance()
         setupCallbacks()
+        val userRole = arguments?.getInt("user_role")!!
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber("+91 956-958-8740")
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())
             .setCallbacks(callbacks)
-            .build()
+
         binding.signIn.setOnClickListener {
             binding.progressSignIn.visibility = VISIBLE
-            PhoneAuthProvider.verifyPhoneNumber(options)
+            phoneNumber="+91" + formatPhoneNumber(binding.inputMobNumber.text.toString())
+            PhoneAuthProvider.verifyPhoneNumber(
+                options.setPhoneNumber(phoneNumber)
+                    .build()
+            )
         }
+
         binding.signUp.setOnClickListener {
-            if (binding.inputName.text.isNullOrBlank()) {
-                firestore.collection("").document(auth.uid!!)
-                    .set(mapOf("name" to binding.inputName.text.toString())).addOnSuccessListener {
-                        navigateToApp()
-                    }
+            if (!binding.inputName.text.isNullOrBlank()) {
+                val user = User(
+                    name = binding.inputName.text.toString(),
+                    phoneNumber = phoneNumber,
+                    role = userRole
+                )
+                firestore.collection("users_collection").document(auth.uid!!)
+                    .set(user).addOnSuccessListener { navigateToApp() }
             }
 
         }
@@ -101,18 +116,18 @@ class Auth : Fragment() {
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
                     lifecycleScope.launch {
-                        val userDocument =
+                        val user =
                             firestore.collection("users_collection").document(auth.uid!!).get()
-                                .await()
-                        if (userDocument != null) {
+                                .await().toObject(User::class.java)
+                        Log.d(TAG, "signInWithPhoneAuthCredential: $user")
+                        if (user != null) {
                             navigateToApp()
                         } else {
-                            binding.inputName.visibility = VISIBLE
+                            binding.inputNameBox.visibility = VISIBLE
                             binding.signIn.visibility = GONE
                             binding.signUp.visibility = VISIBLE
                         }
                     }
-
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
@@ -129,8 +144,8 @@ class Auth : Fragment() {
         _binding = null
     }
 
-    private fun navigateToApp()  {
-        Toast.makeText(requireContext(),"Signed In",Toast.LENGTH_SHORT).show()
+    private fun navigateToApp() {
+        findNavController().navigate(R.id.action_auth_to_settingUpUser)
     }
 
     companion object {

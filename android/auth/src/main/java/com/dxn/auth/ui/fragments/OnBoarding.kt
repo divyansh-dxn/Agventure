@@ -1,4 +1,4 @@
-package com.dxn.auth
+package com.dxn.auth.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.dxn.auth.R
 import com.dxn.auth.databinding.FragmentOnBoardingBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class OnBoarding : Fragment() {
@@ -19,22 +22,35 @@ class OnBoarding : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentOnBoardingBinding.inflate(inflater, container, false)
         navController = findNavController()
+        val bundle = Bundle()
 
         binding.continueConsumer.setOnClickListener {
             Log.d(TAG, "onCreateView: CLICKED")
-            navController.navigate(R.id.action_onBoarding_to_auth)
+            bundle.putInt("user_role", 0)
+            navController.navigate(R.id.action_onBoarding_to_auth, bundle)
+        }
+        binding.continueSeller.setOnClickListener {
+            Log.d(TAG, "onCreateView: CLICKED")
+            bundle.putInt("user_role", 1)
+            navController.navigate(R.id.action_onBoarding_to_auth, bundle)
         }
         return binding.root
-//        return null
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (Firebase.auth.currentUser != null) {
+            navController.navigate(R.id.action_onBoarding_to_settingUpUser)
+        }
     }
 
     companion object {
