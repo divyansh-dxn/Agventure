@@ -1,16 +1,14 @@
 package com.dxn.auth.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.dxn.auth.R
-import com.dxn.auth.data.models.User
-import com.dxn.auth.databinding.FragmentOnBoardingBinding
 import com.dxn.auth.databinding.FragmentSettingUpUserBinding
+import com.dxn.data.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -25,7 +23,6 @@ class SettingUpUser : Fragment() {
     private lateinit var user: User
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

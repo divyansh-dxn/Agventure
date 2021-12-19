@@ -1,70 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="260dp"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
-    >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:layout_marginTop="20dp"
-        android:id="@+id/productImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:contentDescription="Product"
-        android:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:layout_below="@id/productImage"
-        android:id="@+id/productName"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAlignment="center" />
-    <TextView
-        android:layout_below="@id/productName"
-        android:id="@+id/productQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Brinjal"
-        android:textAlignment="center" />
-    <TextView
-        android:layout_below="@id/productQuantity"
-        android:id="@+id/productPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#00ff00"
-        android:text="RS 200/Kg"
-        android:textAlignment="center" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/app_navigation" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/productPrice"
-        >
-        <Button
-            android:id="@+id/buy"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="BUY" />
-
-        <Button
-            android:id="@+id/addtoCart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/productPrice"
-            android:layout_marginBottom="10dp"
-            android:text="ADD TO CART" />
-    </LinearLayout>
-
-</RelativeLayout>
+</FrameLayout>
