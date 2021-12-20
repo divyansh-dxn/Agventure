@@ -20,7 +20,9 @@
         <entry key="buyer/src/main/res/layout/buyer_product_card.xml" value="0.2234375" />
         <entry key="seller/src/main/res/layout/activity_main.xml" value="0.2234375" />
         <entry key="seller/src/main/res/layout/add_fragment.xml" value="0.17592592592592593" />
+        <entry key="seller/src/main/res/layout/home_fragment.xml" value="0.1" />
         <entry key="seller/src/main/res/layout/product_card.xml" value="0.13385416666666666" />
+        <entry key="smsreceiver/src/main/res/layout/activity_main.xml" value="0.2234375" />
       </map>
     </option>
   </component>

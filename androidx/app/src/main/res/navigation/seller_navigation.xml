@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/seller_navigation">
+    android:id="@+id/seller_navigation"
+    app:startDestination="@id/home">
 
+    <fragment
+        android:id="@+id/home"
+        android:name="com.dxn.agventure.features.seller.ui.home.Home"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home_to_add"
+            app:destination="@id/add" />
+    </fragment>
+    <fragment
+        android:id="@+id/add"
+        android:name="com.dxn.agventure.features.seller.ui.add.Add"
+        android:label="Add" />
 </navigation>

@@ -7,3 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Agventure"
 include ':app'
+include ':smsreceiver'
+include ':data'

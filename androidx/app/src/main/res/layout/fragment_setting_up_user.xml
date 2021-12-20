@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.auth.fragments.SettingUpUser">
+    tools:context=".features.auth.ui.SettingUpUser">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

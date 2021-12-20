@@ -20,4 +20,6 @@
     <string name="placeholder">placeholder</string>
     <string name="seller_login">Continue as seller</string>
     <string name="customer_login">Continue as consumer</string>
+    <string name="price_hint">Price</string>
+    <string name="quantity_hint">Quantity</string>
 </resources>
