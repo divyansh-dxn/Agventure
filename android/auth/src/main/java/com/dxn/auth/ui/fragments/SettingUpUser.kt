@@ -1,5 +1,7 @@
 package com.dxn.auth.ui.fragments
 
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,14 +35,18 @@ class SettingUpUser : Fragment() {
         firestore = FirebaseFirestore.getInstance()
 
         lifecycleScope.launch {
-            user = firestore.collection("users_collection").document(auth.uid!!).get().await()
-                .toObject(User::class.java)!!
+            user = firestore.collection("users_collection").whereEqualTo("uid", auth.uid!!).get()
+                .await()
+                .toObjects(User::class.java)[0]
             if(user.role==0) {
                 Toast.makeText(requireContext(), "Signed In as consumer", Toast.LENGTH_SHORT).show()
                 // navigate to user app
             } else {
                 Toast.makeText(requireContext(), "Signed In as seller", Toast.LENGTH_SHORT).show()
-                // navigate to seller app
+                val intent = Intent(Intent.ACTION_MAIN)
+                    .addCategory(Intent.CATEGORY_DEFAULT).setClassName("com.dxn.seller","com.dxn.seller.ui.SellerActivity")
+                    .setComponent(ComponentName("com.dxn.seller", "com.dxn.seller.ui.SellerActivity"))
+                startActivity(intent)
             }
         }
 

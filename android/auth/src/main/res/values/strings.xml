@@ -22,4 +22,5 @@
     <string name="customer_login">Continue As Consumer</string>
     <string name="name_hint">Full Name</string>
     <string name="continue_signup">Sign Up</string>
+    <string name="title_sms">SMS</string>
 </resources>

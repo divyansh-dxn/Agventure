@@ -23,7 +23,7 @@ constructor(
 ) : ViewModel() {
 
     private val _products = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
-    val products: StateFlow<HomeUiState> = _products
+    val products: StateFlow<HomeUiState> get() = _products
 
     init {
         loadProducts()

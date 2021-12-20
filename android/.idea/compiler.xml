@@ -6,6 +6,8 @@
       <module name="Agventure.auth" target="11" />
       <module name="Agventure.buyer" target="11" />
       <module name="Agventure.seller" target="11" />
+      <module name="Agventure.Seller" target="11" />
+      <module name="Agventure.sms" target="11" />
       <module name="Agventure.smsreceiver" target="11" />
     </bytecodeTargetLevel>
   </component>

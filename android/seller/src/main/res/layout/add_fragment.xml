@@ -9,12 +9,13 @@
     tools:context=".ui.fragments.add.Add">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/menu"
+        android:id="@+id/menu_box"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Choose product">
         <AutoCompleteTextView
+            android:id="@+id/menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
@@ -48,6 +49,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/submit_btn"
         android:text="Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

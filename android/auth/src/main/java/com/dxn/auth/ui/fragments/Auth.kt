@@ -54,9 +54,10 @@ class Auth : Fragment() {
 
         binding.signIn.setOnClickListener {
             binding.progressSignIn.visibility = VISIBLE
-            phoneNumber="+91" + formatPhoneNumber(binding.inputMobNumber.text.toString())
+            val rawNumber = binding.inputMobNumber.text.toString()
+            phoneNumber= "+91$rawNumber"
             PhoneAuthProvider.verifyPhoneNumber(
-                options.setPhoneNumber(phoneNumber)
+                options.setPhoneNumber("+91${formatPhoneNumber(rawNumber)}")
                     .build()
             )
         }
@@ -66,9 +67,10 @@ class Auth : Fragment() {
                 val user = User(
                     name = binding.inputName.text.toString(),
                     phoneNumber = phoneNumber,
-                    role = userRole
+                    role = userRole,
+                    uid = auth.uid!!
                 )
-                firestore.collection("users_collection").document(auth.uid!!)
+                firestore.collection("users_collection").document(phoneNumber)
                     .set(user).addOnSuccessListener { navigateToApp() }
             }
 
@@ -117,7 +119,7 @@ class Auth : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     lifecycleScope.launch {
                         val user =
-                            firestore.collection("users_collection").document(auth.uid!!).get()
+                            firestore.collection("users_collection").document(phoneNumber).get()
                                 .await().toObject(User::class.java)
                         Log.d(TAG, "signInWithPhoneAuthCredential: $user")
                         if (user != null) {
