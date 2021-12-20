@@ -22,8 +22,7 @@ import com.dxn.data.models.User
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import android.app.Activity
-
-
+import androidx.navigation.fragment.findNavController
 
 
 class Add : Fragment() {
@@ -83,6 +82,7 @@ class Add : Fragment() {
                 binding.inputQuantity.setText("")
                 binding.inputPrice.setText("")
                 hideKeyboard(requireActivity())
+                findNavController().popBackStack()
             } else {
                 Toast.makeText(requireContext(), "Please wait some time", Toast.LENGTH_SHORT).show()
             }

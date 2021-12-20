@@ -43,7 +43,6 @@ constructor(
     }
 
     fun removeProduct(productId: String) {
-
         viewModelScope.launch(Dispatchers.IO) {
             val loggedInUser = repository.getLoggedInUser()
             repository.removeProduct(loggedInUser.phoneNumber, productId)

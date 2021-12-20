@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".features.auth.ui.SettingUpUser">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <ImageView
+       android:src="@drawable/ic_empty_state"
+       android:layout_width="match_parent"
+       android:scaleType="centerInside"
+       android:layout_height="match_parent"/>
 
 </FrameLayout>
