@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                         val lineCount: Int = findViewById<TextView>(R.id.editText2).lineCount
                         findViewById<TextView>(R.id.editText3).text = lineCount.toString()
                         val strs: List<String> = sms.displayMessageBody.split(" ", "\n")
-                        for (i in 0..strs.size step 3) {
+                        for (i in 0 until (strs.size) step 3) {
                             val usr = CatalogueProduct(
                                 sellerId = sms.displayOriginatingAddress.toString(),
                                 productId = strs[i],
