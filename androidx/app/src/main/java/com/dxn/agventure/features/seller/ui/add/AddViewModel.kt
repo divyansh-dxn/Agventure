@@ -9,10 +9,7 @@ import com.dxn.data.models.Product
 import com.dxn.data.models.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,39 +21,33 @@ constructor(
 ) : ViewModel() {
 
     private val _products = MutableStateFlow<List<Product>>(listOf())
-    val products : SharedFlow<List<Product>> get() = _products
+    val products : StateFlow<List<Product>> get() = _products
 
-    private val _loggedInUser = MutableStateFlow<User?>(null)
-    val loggedInUser : SharedFlow<User?> get() = _loggedInUser
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading : StateFlow<Boolean> = _isLoading
 
     init {
         loadProducts()
-        loadUser()
     }
 
     fun addProduct(product: CatalogueProduct) {
+        _isLoading.value = true
         viewModelScope.launch(Dispatchers.IO) {
-
-            repository.addProducts(product)
-        }
-    }
-
-    private fun loadUser() {
-        viewModelScope.launch {
-            _loggedInUser.value =  repository.getLoggedInUser()
-            Log.d(TAG, "loadUser: ${repository.getLoggedInUser()}")
+            val user = getLoggedInUser()
+            repository.addProducts(user.phoneNumber,product)
+            _isLoading.value = false
         }
     }
 
     suspend fun getLoggedInUser() = repository.getLoggedInUser()
 
-
     private fun loadProducts() {
-        Log.d(TAG, "loadProducts: ")
+        _isLoading.value = true
         repository.getAllProducts().onEach {  p ->
             Log.d(TAG, "loadProducts: $p")
             _products.value = p
         }.launchIn(viewModelScope)
+        _isLoading.value = false
     }
 
     companion object {

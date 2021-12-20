@@ -4,12 +4,12 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dxn.agventure.features.seller.domain.Repository
+import com.dxn.agventure.features.seller.ui.add.AddViewModel
 import com.dxn.data.models.CatalogueProduct
+import com.dxn.data.models.User
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +22,6 @@ constructor(
 
     private val _products = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
     val products: StateFlow<HomeUiState> get() = _products
-
 
     init {
         loadProducts()
@@ -41,7 +40,14 @@ constructor(
                     HomeUiState.Error(if (e.localizedMessage != null) e.localizedMessage else "Something went wrong")
             }
         }
+    }
 
+    fun removeProduct(productId: String) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val loggedInUser = repository.getLoggedInUser()
+            repository.removeProduct(loggedInUser.phoneNumber, productId)
+        }
     }
 
 

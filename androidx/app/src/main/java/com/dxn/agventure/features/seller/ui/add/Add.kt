@@ -1,11 +1,16 @@
 package com.dxn.agventure.features.seller.ui.add
 
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.hardware.input.InputManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,6 +21,10 @@ import com.dxn.data.models.Product
 import com.dxn.data.models.User
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import android.app.Activity
+
+
+
 
 class Add : Fragment() {
 
@@ -42,24 +51,19 @@ class Add : Fragment() {
     }
 
     private fun initUi() {
-        binding.inputPrice.setText("0")
-        binding.inputQuantity.setText("0")
         lifecycleScope.launchWhenCreated {
-            viewModel.products.collect { productList ->
-                products = productList
-                val items = productList.map { it.name }
-                val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                    requireContext(),
-                    android.R.layout.simple_dropdown_item_1line,
-                    items
-                )
-                binding.menu.setAdapter(adapter)
-
+            viewModel.products.collect { products ->
+                showSuccessScreen(products)
             }
-//            viewModel.loggedInUser.collect { loggedInUser ->
-//
-//                user = loggedInUser
-//            }
+        }
+        lifecycleScope.launch {
+            viewModel.isLoading.collect { isLoading ->
+                if (isLoading) {
+                    binding.loading.visibility = View.VISIBLE
+                } else {
+                    binding.loading.visibility = View.GONE
+                }
+            }
         }
 
         binding.submitBtn.setOnClickListener {
@@ -76,12 +80,34 @@ class Add : Fragment() {
                     photoUrl = product.photoUrl
                 )
                 viewModel.addProduct(catalogueProduct)
-//                binding.inputPrice
+                binding.inputQuantity.setText("")
+                binding.inputPrice.setText("")
+                hideKeyboard(requireActivity())
             } else {
                 Toast.makeText(requireContext(), "Please wait some time", Toast.LENGTH_SHORT).show()
             }
 
         }
+    }
+
+    private fun showSuccessScreen(productList: List<Product>) {
+        products = productList
+        val items = productList.map { it.name }
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            requireContext(),
+            android.R.layout.simple_dropdown_item_1line,
+            items
+        )
+        binding.menu.setAdapter(adapter)
+    }
+
+    fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity.currentFocus
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }

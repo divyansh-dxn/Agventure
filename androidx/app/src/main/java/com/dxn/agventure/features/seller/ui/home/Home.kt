@@ -42,7 +42,7 @@ class Home : Fragment() {
     }
 
     private fun initUi() {
-        val productListAdapter = ProductListAdapter {}
+        val productListAdapter = ProductListAdapter { viewModel.removeProduct(it) }
         binding.productsRecycler.adapter = productListAdapter
         binding.productsRecycler.layoutManager =
             GridLayoutManager(requireContext(), 2, RecyclerView.VERTICAL, false)

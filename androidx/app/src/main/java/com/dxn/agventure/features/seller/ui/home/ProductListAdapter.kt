@@ -39,6 +39,8 @@ class ProductListAdapter(val onRemoveClicked: (productId: String) -> Unit) :
         holder.productImage.load(products[position].photoUrl)
     }
 
+
+
     override fun getItemCount(): Int {
         return products.size
     }
