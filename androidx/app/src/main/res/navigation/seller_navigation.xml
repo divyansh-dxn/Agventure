@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/seller_navigation"
     app:startDestination="@id/home">
 
     <fragment
         android:id="@+id/home"
+        tools:layout="@layout/home_fragment"
         android:name="com.dxn.agventure.features.seller.ui.home.Home"
         android:label="Home" >
         <action
@@ -14,6 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/add"
+        tools:layout="@layout/add_fragment"
         android:name="com.dxn.agventure.features.seller.ui.add.Add"
         android:label="Add" />
 </navigation>

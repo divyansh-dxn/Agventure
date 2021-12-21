@@ -11,12 +11,14 @@ import android.provider.Telephony
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import com.dxn.data.models.CatalogueProduct
 import com.dxn.data.models.Product
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import java.lang.IndexOutOfBoundsException
 
 class ReceiverActivity : AppCompatActivity() {
 
@@ -31,6 +33,7 @@ class ReceiverActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
         lifecycleScope.launchWhenCreated {
             products = firestore.collection("products").get().await().toObjects(Product::class.java)
+            Log.d(TAG, "onCreate: ${products}")
         }
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
             != PackageManager.PERMISSION_GRANTED
@@ -72,7 +75,11 @@ class ReceiverActivity : AppCompatActivity() {
                     val strings: List<String> = sms.displayMessageBody.split(" ", "\n")
                     for (i in 0 until (strings.size) step 3) {
                         try {
-                            val product = products.filter { it.id == strings[i] }[0]
+                            Log.d(TAG, "onReceive: ${strings[i]}")
+                            Log.d(TAG, "onReceive: ${products[i]}")
+                            val product = products.filter {
+                                it.id == strings[i]
+                            }[0]
                             val catalogueProduct = CatalogueProduct(
                                 sellerId = sms.displayOriginatingAddress.toString(),
                                 productId = product.id,
@@ -82,8 +89,9 @@ class ReceiverActivity : AppCompatActivity() {
                                 quantity = strings[i + 2].toInt()
                             )
                             firestore.collection("products_collection").document().set(catalogueProduct)
-                        } catch (e:ArrayIndexOutOfBoundsException) {
+                        } catch (e:IndexOutOfBoundsException) {
                             Log.d(TAG, "onReceive: INVALID PRODUCT ID RECEIVED")
+                            Toast.makeText(applicationContext,"Error! Check your internet connection.",Toast.LENGTH_SHORT).show()
                         }
 
                     }

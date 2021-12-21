@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -86,11 +87,17 @@
         </LinearLayout>
         <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:id="@+id/remove"
+            android:id="@+id/buy"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:text="Remove" />
+            android:text="BUY" />
+        <Button
+            android:id="@+id/add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="ADD TO CART" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

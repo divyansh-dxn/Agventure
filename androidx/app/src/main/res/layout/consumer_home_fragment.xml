@@ -9,30 +9,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
+        android:layout_height="56dp"
         android:gravity="center_vertical"
-        android:layout_height="56dp">
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
         <TextView
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:textFontWeight="700"
             android:layout_height="wrap_content"
-            android:text="Your Catalogue" />
+            android:layout_weight="1"
+            android:text="Agventure" />
 
         <Button
             android:id="@+id/sign_out"
-            android:text="Sign Out"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Sign Out" />
+        <View
+            android:layout_width="16dp"
+            android:layout_height="0dp"/>
+
+        <ImageView
+            android:src="@drawable/ic_cart"
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
     </LinearLayout>
 
     <FrameLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/products_recycler"
@@ -40,18 +49,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
-            tools:listitem="@layout/product_card"
-            />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:id="@+id/fab"
-            android:layout_margin="24dp"
-            android:src="@drawable/ic_add_black"
-            android:layout_gravity="bottom|end"
-            android:layout_height="wrap_content"
-            android:contentDescription="add product" />
-
+            tools:listitem="@layout/consumer_product_card" />
     </FrameLayout>
 
 </LinearLayout>

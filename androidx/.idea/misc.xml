@@ -4,16 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_auth.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_consumer.xml" value="0.15677083333333333" />
+        <entry key="app/src/main/res/layout/activity_customer.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_seller.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/add_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/buyer_product_card.xml" value="0.2234375" />
+        <entry key="app/src/main/res/layout/add_fragment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/buyer_product_card.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/consumer_home_fragment.xml" value="0.2234375" />
+        <entry key="app/src/main/res/layout/consumer_product_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/fragment_on_boarding.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/fragment_setting_up_user.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.2234375" />
-        <entry key="app/src/main/res/layout/product_card.xml" value="0.2234375" />
+        <entry key="app/src/main/res/layout/product_card.xml" value="0.24459876543209877" />
         <entry key="smsreceiver/src/main/res/layout/activity_receiver.xml" value="0.2234375" />
         <entry key="smsreceiver/src/main/res/layout/content_receiver.xml" value="0.2234375" />
         <entry key="smsreceiver/src/main/res/layout/fragment_first.xml" value="0.2234375" />

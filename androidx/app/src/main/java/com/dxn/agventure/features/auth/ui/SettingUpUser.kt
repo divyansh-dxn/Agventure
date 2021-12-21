@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.dxn.agventure.databinding.FragmentSettingUpUserBinding
+import com.dxn.agventure.features.consumer.ConsumerActivity
 import com.dxn.agventure.features.seller.SellerActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -42,10 +43,10 @@ class SettingUpUser : Fragment() {
                 .await()
                 .toObjects(User::class.java)[0]
             if(user.role==0) {
-                Toast.makeText(requireContext(), "Signed In as consumer", Toast.LENGTH_SHORT).show()
                 // navigate to user app
+                startActivity(Intent(requireContext(),ConsumerActivity::class.java))
+                requireActivity().finish()
             } else {
-                Toast.makeText(requireContext(), "Signed In as seller", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(requireContext(),SellerActivity::class.java))
                 requireActivity().finish()
             }

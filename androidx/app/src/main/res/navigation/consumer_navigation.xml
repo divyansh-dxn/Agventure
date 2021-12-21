@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/consumer_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consumer_navigation"
+    app:startDestination="@id/consumer_home">
 
+    <fragment
+        android:id="@+id/consumer_home"
+        android:name="com.dxn.agventure.features.consumer.ui.home.ConsumerHome"
+        tools:layout="@layout/consumer_home_fragment"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_consumer_home_to_cart"
+            app:destination="@id/cart" />
+    </fragment>
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.dxn.agventure.features.consumer.ui.cart.Cart"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment" />
 </navigation>
