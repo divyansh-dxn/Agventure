@@ -13,13 +13,20 @@ Technologies involved in this are android , firebase, sms services and React js 
 ## Solution
 The solution for this problem is that if we remove the middlemen from the picture and we make direct contact between the farmer and the consumer. Our solution proposes such an architecture which can act as a interface layer between consumers and farmers.
 Our solution consists of following key points:
-● Farmers can list their product on our service
-● Data will be store on firebase
-● The products will be listed on consumer’s app.
-● Users will place order through the app and will pay.
-● Our system will assign it to the delivery service, and provide the funds to delivery service.
-● Delivery service will pick-up the product, provide cash payment to the farmer and deliver it to
+- Farmers can list their product on our service
+- Data will be store on firebase
+- The products will be listed on consumer’s app.
+- Users will place order through the app and will pay.
+- Our system will assign it to the delivery service, and provide the funds to delivery service.
+- Delivery service will pick-up the product, provide cash payment to the farmer and deliver it to
    the consumer.
+   
+## Screenshots
+<img alt="Buyer"
+        height="423" src=https://github.com/divyansh-dxn/Agventure/blob/main/BUYER.jpeg />
+<img alt="Website"
+        height="423" src=https://github.com/divyansh-dxn/Agventure/blob/main/Website.jpeg />
+
 
 ### Authors
 
